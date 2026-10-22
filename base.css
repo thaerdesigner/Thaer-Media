@@ -293,7 +293,6 @@ footer{padding:55px 0 30px}
 .standalone-copyright{white-space:nowrap}
 .standalone-footer-return{min-height:40px;padding-inline:16px;color:var(--gold-button-text);font-size:12px}
 :root[data-theme="light"] .standalone-footer{border-top-color:rgba(17,92,78,.16)}
-body > footer.footer-minimal .footer-grid{display:none}
 
 @media(max-width:980px){
   .footer-grid{grid-template-columns:1fr 1fr;gap:28px}

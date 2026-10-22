@@ -306,7 +306,15 @@
           </form>
         </div>
       </section>
-    </main>`;
+    </main>
+    <footer class="standalone-footer offline-standalone-footer">
+      <div class="container">
+        <div class="standalone-footer-row">
+          <span class="standalone-copyright" data-ar="© 2026 Thaer Media. جميع الحقوق محفوظة." data-en="© 2026 Thaer Media. All rights reserved.">© 2026 Thaer Media. جميع الحقوق محفوظة.</span>
+          <a class="standalone-footer-return gold-btn" href="#home" data-ar="العودة إلى الموقع" data-en="Back to website">العودة إلى الموقع</a>
+        </div>
+      </div>
+    </footer>`;
   const contactMarkup = `
     <main class="page contact-page"><div class="container">
       <section class="contact-hero" aria-labelledby="contactHeading">
@@ -326,7 +334,15 @@
         <div class="contact-hero-visual"><div class="contact-photo-frame"><div class="contact-photo-inner"><img src="assets/images/hero-person.jpg" alt="ثائر القُريناوي" data-alt-ar="ثائر القُريناوي" data-alt-en="Thaer AlQrenawi" decoding="async"><img class="contact-photo-light" src="assets/images/hero-person-light.png" alt="" aria-hidden="true" decoding="async"><span class="contact-photo-shade"></span></div></div></div>
       </section>
       <section class="contact-process-section"><div class="section-head contact-process-head"><div class="section-title-wrap"><h2><span class="section-kicker">كيف نبدأ:</span> خطوة بسيطة تفصل فكرتك عن التنفيذ</h2></div><p>نقاش واضح يساعدنا على فهم احتياجك ورسم اتجاه مناسب.</p></div><div class="contact-process-grid"></div></section>
-    </div></main>`;
+    </div></main>
+    <footer class="standalone-footer offline-standalone-footer">
+      <div class="container">
+        <div class="standalone-footer-row">
+          <span class="standalone-copyright" data-ar="© 2026 Thaer Media. جميع الحقوق محفوظة." data-en="© 2026 Thaer Media. All rights reserved.">© 2026 Thaer Media. جميع الحقوق محفوظة.</span>
+          <a class="standalone-footer-return gold-btn" href="#home" data-ar="العودة إلى الموقع" data-en="Back to website">العودة إلى الموقع</a>
+        </div>
+      </div>
+    </footer>`;
   function workMarkup(){
     return `<main class="page"><div class="container"><div class="section-head"><div class="section-title-wrap"><h1></h1></div><p></p></div><div class="gallery-grid"></div></div></main>`;
   }
@@ -374,8 +390,7 @@
     const isCourse=route==='course';
     const isContact=route==='contact';
     home.hidden=!isHome;
-    footer.hidden=false;
-    footer.classList.toggle('footer-minimal',isCourse||isContact);
+    footer.hidden=isCourse||isContact;
     page.hidden=isHome;
     document.body.classList.toggle('course-page',isCourse);
     document.body.classList.toggle('contact-landing',isContact);

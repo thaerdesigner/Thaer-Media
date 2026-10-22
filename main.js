@@ -179,9 +179,6 @@ if(adSlider){
   const adSlides=[...adSlider.querySelectorAll('.ad-slide')];
   const adDots=[...adSlider.querySelectorAll('.ad-slider-dots button')];
   const track=adSlider.querySelector('.ad-slider-track');
-  if(adSlides.length===1){
-    adSlider.querySelectorAll('.ad-slider-arrow, .ad-slider-dots').forEach(control=>{control.hidden=true});
-  }
   const firstClone=adSlides[0].cloneNode(true);
   const lastClone=adSlides[adSlides.length-1].cloneNode(true);
   firstClone.classList.remove('active');

@@ -71,7 +71,7 @@
     nav.innerHTML = D.nav.map(item=>{
       const href = item.href.charAt(0)==='#'
         ? (isHome?item.href:(rootPrefix+'index.html'+item.href))
-        : rootPrefix+item.href;
+        : (item.href.startsWith('/')?item.href:rootPrefix+item.href);
       return `<a href="${href}" ${bilingualAttrs({ar:item.ar,en:item.en})}>${escAttr(item.ar)}</a>`;
     }).join('');
   }
@@ -192,22 +192,22 @@
   }
 
   /* ---------- صفحات الأعمال الستة: معرض الصور ---------- */
-  function renderWorkPage(slug){
+  function renderWorkPage(slug, root=document){
     const page = D.work[slug];
     if (!page) return;
-    const titleEl = document.querySelector('.section-title-wrap h1');
+    const titleEl = root.querySelector('.section-title-wrap h1');
     if (titleEl) setBilingual(titleEl, two(page.title).ar, two(page.title).en);
-    const descEl = document.querySelector('.section-head > p');
+    const descEl = root.querySelector('.section-head > p');
     if (descEl) setBilingual(descEl, two(page.description).ar, two(page.description).en);
     // عنوان تبويب المتصفح: main.js/work.js يحتاجها عند تبديل اللغة لاحقاً
     window.__pageTitle = { ar: 'Thaer Media — ' + two(page.title).ar, en: 'Thaer Media — ' + two(page.title).en };
     document.title = window.__pageTitle.ar;
 
-    const grid = document.querySelector('.gallery-grid');
+    const grid = root.querySelector('.gallery-grid');
     if (grid){
       const homeLink = document.createElement('a');
       homeLink.className = 'gallery-home-link gold-btn';
-      homeLink.href = 'index.html#home';
+      homeLink.href = '#home';
       homeLink.setAttribute('data-ar', 'العودة إلى الصفحة الرئيسية');
       homeLink.setAttribute('data-en', 'Back to home');
       homeLink.textContent = 'العودة إلى الصفحة الرئيسية';
@@ -232,22 +232,22 @@
   }
 
   /* ---------- صفحة التواصل ---------- */
-  function renderContactPage(){
+  function renderContactPage(root=document){
     const c = D.contactPage;
     window.__pageTitle = two(c.title);
     document.title = window.__pageTitle.ar;
 
-    const headEl = document.querySelector('.section-head:not(.contact-process-head) .section-title-wrap h1');
+    const headEl = root.querySelector('.section-head:not(.contact-process-head) .section-title-wrap h1');
     if (headEl) setBilingual(headEl, two(c.heading).ar, two(c.heading).en);
-    const paraEl = document.querySelector('.section-head:not(.contact-process-head) > p');
+    const paraEl = root.querySelector('.section-head:not(.contact-process-head) > p');
     if (paraEl) setBilingual(paraEl, two(c.paragraph).ar, two(c.paragraph).en);
 
-    const processHeadEl = document.querySelector('.contact-process-head .section-title-wrap h2');
+    const processHeadEl = root.querySelector('.contact-process-head .section-title-wrap h2');
     if (processHeadEl) setBilingual(processHeadEl, two(c.processHeading).ar, two(c.processHeading).en);
-    const processParaTag = document.querySelector('.contact-process-head > p');
+    const processParaTag = root.querySelector('.contact-process-head > p');
     if (processParaTag) setBilingual(processParaTag, two(c.processParagraph).ar, two(c.processParagraph).en);
 
-    const grid = document.querySelector('.contact-process-grid');
+    const grid = root.querySelector('.contact-process-grid');
     if (grid){
       grid.innerHTML = c.process.map(p=>`
         <div class="contact-step step glass">
@@ -256,7 +256,11 @@
           <p ${bilingualAttrs(p.description)}>${escAttr(two(p.description).ar)}</p>
         </div>`).join('');
     }
+
   }
+
+  window.renderOfflineWorkPage = renderWorkPage;
+  window.renderOfflineContactPage = renderContactPage;
 
   /* ---------- التشغيل ---------- */
   const isHome = !!document.querySelector('.hero');

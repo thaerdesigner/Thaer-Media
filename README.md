@@ -1,9 +1,9 @@
 # Thaer Media — Website
 
 Static marketing website for **Thaer Media** (design / branding / social-media agency). Plain
-HTML/CSS/JS — no build tool, no package manager, no framework, no server-side code. Most of the
-main-site content is centralized in [`assets/js/data.js`](assets/js/data.js), so day-to-day content
-updates don't require editing HTML.
+HTML/CSS/JS — no build tool, no package manager, no framework, no server-side code. The homepage,
+contact page, course landing page, and six work galleries can be opened from the main
+[`index.html`](index.html); most shared content remains centralized in [`assets/js/data.js`](assets/js/data.js).
 See **"التحكم بمحتوى الموقع"** below for the full guide to that file.
 
 For deeper architectural notes (why things are built the way they are, past bugs and their fixes,
@@ -11,8 +11,9 @@ design decisions) see [`CLAUDE.md`](CLAUDE.md) — written for whoever maintains
 
 ## Running locally
 
-No build step. Either open an HTML file directly in a browser, or serve the folder so relative
-paths behave exactly like a real deployment:
+No build step. Keep the `assets/` folder beside `index.html`, then open `index.html` directly.
+Its section and page routes work locally without a web server. The standalone HTML pages remain
+available for direct web URLs. To test the site over HTTP as well:
 
 ```bash
 npx serve .
@@ -26,16 +27,15 @@ Then visit `http://localhost:8000` (or whatever port the tool prints).
 
 | File | Description |
 |---|---|
-| `index.html` | Homepage — hero, services, work showcase, about, process, testimonials, CTA. Bilingual (AR/EN toggle in the header). |
-| `work-social.html`, `work-identity.html`, `work-ads.html`, `work-print.html`, `work-content.html`, `work-marketing.html` | One gallery page per service, linked from the homepage. |
-| `contact/index.html` | Contact page at `/contact/` (WhatsApp/email cards + "how we start" steps). |
-| `course.html` | Standalone in-person course landing page with registration form; the homepage slider links to it. |
+| `index.html` | Main offline entry point: homepage, contact, course, and six work-gallery views. Bilingual (AR/EN toggle in the header). |
+| `work-social.html`, `work-identity.html`, `work-ads.html`, `work-print.html`, `work-content.html`, `work-marketing.html` | Standalone web versions of the work galleries. |
+| `contact/index.html` | Standalone contact page served at `/contact/` by GitHub Pages. |
+| `course.html` and `socialmedia.courses1/index.html` | Standalone web versions of the in-person course landing page. |
 
-The homepage, six work pages, and contact page (8 pages) share the site header/footer. The separate
-course landing page also supports the AR/EN and dark/light toggles.
-
-The course page is a standalone `course.html` file in the site root. Its assets and navigation
-links use local relative paths so the page can also be opened offline.
+From `index.html`, use the header, service cards, course slider, or CTA to switch between the
+embedded views without opening a separate local HTML file. The offline views use local images and
+styles from `assets/`. Custom web fonts are hosted remotely; without an internet connection, the
+browser uses the declared system-font fallbacks.
 
 ## Project structure
 

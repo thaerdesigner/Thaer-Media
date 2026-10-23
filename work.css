@@ -1,0 +1,119 @@
+body{margin:0;min-height:100vh;overflow-x:hidden;background:radial-gradient(900px 500px at 8% 8%,var(--bg-radial-1),transparent 62%),radial-gradient(800px 500px at 92% 24%,var(--bg-radial-2),transparent 60%),linear-gradient(145deg,var(--bg-1) 0%,var(--bg-2) 45%,var(--bg-3) 100%);color:var(--text);font-family:"Expo Arabic","Manrope",Arial,sans-serif;transition:background .45s var(--ease),color .35s var(--ease)}
+.page{padding:150px 0 100px}.section-head{display:flex;flex-direction:column;gap:8px;margin-bottom:42px}.section-title-wrap{position:relative}.section-kicker{color:var(--gold-text)}h1{font-size:clamp(32px,3.5vw,50px);line-height:1.08;margin:0;letter-spacing:-.035em}h2{margin:0}.section-head p{color:var(--text-muted);max-width:700px;font-size:16px;line-height:1.9;margin:0}
+.gallery-home-link{display:flex;width:fit-content;margin:28px 0 0}
+html[dir="rtl"] .section-title-wrap,html[dir="rtl"] .section-head p{text-align:right;direction:rtl}
+html[dir="ltr"] .section-title-wrap,html[dir="ltr"] .section-head p{text-align:left;direction:ltr}.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.gallery-card{min-height:300px;border-radius:var(--radius);overflow:hidden;position:relative;isolation:isolate;cursor:pointer;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}.gallery-art{position:absolute;inset:0;background:linear-gradient(135deg,#0e514c,#071d2d);overflow:hidden}.gallery-card:nth-child(2) .gallery-art{background:linear-gradient(135deg,#0b2d37,#183f42)}.gallery-card:nth-child(3) .gallery-art{background:linear-gradient(135deg,#183b37,#071b2f)}.gallery-card:nth-child(4) .gallery-art{background:linear-gradient(135deg,#0b2330,#0d514d)}.gallery-card:nth-child(5) .gallery-art{background:linear-gradient(135deg,#123a38,#071b2f)}.gallery-card:nth-child(6) .gallery-art{background:linear-gradient(135deg,#0a2b31,#16433f)}.gallery-art:before{content:"";position:absolute;inset:-45%;pointer-events:none;background:radial-gradient(circle at 18% 22%,rgba(226,185,97,.38),transparent 23%),radial-gradient(circle at 78% 72%,rgba(226,185,97,.22),transparent 24%),radial-gradient(circle at 52% 48%,rgba(226,185,97,.13),transparent 34%);filter:blur(24px);opacity:.88;animation:galleryGlow 9s ease-in-out infinite alternate}.gallery-card:nth-child(2) .gallery-art:before{animation-delay:-1.4s}.gallery-card:nth-child(3) .gallery-art:before{animation-delay:-2.8s}.gallery-card:nth-child(4) .gallery-art:before{animation-delay:-4.2s}.gallery-card:nth-child(5) .gallery-art:before{animation-delay:-5.6s}.gallery-card:nth-child(6) .gallery-art:before{animation-delay:-7s}@keyframes galleryGlow{0%{transform:translate(-11%,-7%) scale(.9);opacity:.58}50%{transform:translate(7%,5%) scale(1.05);opacity:.9}100%{transform:translate(12%,-4%) scale(.98);opacity:.68}}.gallery-card:hover{transform:translateY(-6px);border-color:rgba(226,185,97,.48);box-shadow:0 20px 55px rgba(0,0,0,.28),0 0 0 1px rgba(226,185,97,.08)}.gallery-card:hover .gallery-art{transform:scale(1.045)}.gallery-overlay{display:none!important;position:absolute;inset:auto 0 0;padding:28px;z-index:2;background:linear-gradient(to top,rgba(3,13,17,.96),rgba(3,13,17,.28) 70%,transparent)}.gallery-overlay span{font-size:11px;line-height:1.2;color:var(--gold);font-weight:800}.gallery-overlay h2{font-size:22px;line-height:1.2;margin:2px 0;white-space:normal;color:var(--white)}.gallery-overlay p{margin:0;color:rgba(247,246,241,.7);font-size:14px;line-height:1.35}
+/* GLOBAL LANGUAGE + GRID CONTRACT */
+@media(max-width:980px){.page{padding:112px 0 70px}.section-head{gap:8px;margin-bottom:30px}.section-head p{max-width:none;font-size:15px}.gallery-home-link{margin-top:22px}.gallery-grid{grid-template-columns:1fr 1fr}}@media(max-width:640px){.gallery-grid{grid-template-columns:1fr}}
+
+/* ==================== Lightbox (gallery image preview) ====================
+   Only .gallery-card elements with a real image (data-image, set by render.js
+   once SITE_DATA.work.<slug>.gallery[i].image is filled in) are clickable —
+   the placeholder "سيتم إضافة المشروع هنا" cards stay inert, nothing to enlarge.
+   Structure: <dialog class="lightbox"> spans the full viewport and is the
+   click-catcher for "click outside to close" (its own background is
+   transparent — only ::backdrop is dimmed); the actual visible card is the
+   centered .lightbox-figure child, so a click lands on the dialog itself
+   (closes) only when it's NOT on the figure or a descendant of it. */
+.gallery-card[data-image]{cursor:pointer}
+.gallery-card:not([data-image]){cursor:default}
+
+.lightbox{
+  position:fixed;inset:0;width:100%;height:100%;max-width:100%;max-height:100%;
+  margin:0;padding:24px;border:0;background:transparent;color:var(--white);
+}
+/* display:flex must stay gated behind [open] — author CSS always overrides the UA
+   stylesheet's dialog:not([open]){display:none} regardless of selector specificity
+   (origin precedence beats specificity across origins), so an ungated display:flex
+   here would make the dialog visible — and intercepting clicks — even when closed. */
+.lightbox[open]{display:flex;align-items:center;justify-content:center}
+.lightbox::backdrop{background:rgba(3,10,14,.88);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.lightbox-figure{
+  margin:0;position:relative;max-width:min(1000px,100%);max-height:100%;
+  display:flex;flex-direction:column;border-radius:22px;overflow:hidden;
+  background:linear-gradient(145deg,#11413f,#071b2f);box-shadow:var(--shadow);
+  opacity:0;transform:scale(.94);transition:opacity .28s var(--ease),transform .28s var(--ease);
+}
+.lightbox.is-open .lightbox-figure{
+   margin:0;position:relative;display:flex;align-items:center;justify-content:center;
+   width:auto;height:auto;max-width:min(1200px,92vw);max-height:90vh;
+   border-radius:22px;overflow:hidden;background:transparent;box-shadow:var(--shadow);
+   opacity:0;transform:scale(.96);transition:opacity .22s ease,transform .22s ease;
+ }
+ .lightbox.is-open .lightbox-figure{opacity:1;transform:scale(1)}
+ .lightbox-figure img{
+   display:block;width:auto;height:auto;max-width:92vw;max-height:88vh;
+   object-fit:contain;border-radius:22px;background:transparent;
+ }
+ .lightbox-figure figcaption{display:none!important}
+ .lightbox[open]{padding:0;position:fixed;inset:0;margin:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;overflow:visible}
+ .lightbox-close,.lightbox-nav{
+   position:absolute;z-index:20;display:grid;place-items:center;box-sizing:border-box;
+   color:#f7f6f1;background:rgba(9,32,38,.72);border:1px solid rgba(226,185,96,.48);
+   -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+   box-shadow:0 8px 28px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.10);
+   cursor:pointer;transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+ }
+ /* Close button follows the active language: Arabic top-right, English top-left. */
+  .lightbox-close{top:22px;left:auto;right:24px;inset-inline-end:auto;inset-inline-start:auto;width:48px;height:48px;padding:0;border-radius:50%;font-family:Arial,sans-serif;font-size:22px;font-weight:300;line-height:1}
+  html[dir="ltr"] .lightbox-close{left:24px;right:auto}
+  html[dir="rtl"] .lightbox-close{right:24px;left:auto}
+ .lightbox-nav{top:50%;width:48px;height:48px;padding:0;border-radius:50%;transform:translateY(-50%)}
+ /* Keep navigation controls anchored to the viewport sides, never the image center. */
+.lightbox-nav.prev{position:fixed!important;left:12px!important;right:auto!important;top:50vh!important;bottom:auto!important;inset-inline-start:auto!important;inset-inline-end:auto!important;margin:0!important;transform:translateY(-50%)!important}
+.lightbox-nav.next{position:fixed!important;right:12px!important;left:auto!important;top:50vh!important;bottom:auto!important;inset-inline-start:auto!important;inset-inline-end:auto!important;margin:0!important;transform:translateY(-50%)!important}
+ .lightbox-close:hover,.lightbox-nav:hover{background:rgba(226,185,96,.18);border-color:rgba(226,185,96,.9);box-shadow:0 10px 32px rgba(0,0,0,.38),0 0 0 4px rgba(226,185,96,.08)}
+ .lightbox-nav:hover{transform:translateY(-50%) scale(1.06)}
+ .lightbox-nav svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+ @media(max-width:640px){
+   .lightbox{padding:12px}
+   .lightbox-figure{max-width:94vw;max-height:86vh;border-radius:18px}
+   .lightbox-figure img{max-width:94vw;max-height:84vh;border-radius:18px}
+    .lightbox-close{top:14px;left:auto;right:14px;inset-inline-start:auto;inset-inline-end:auto;width:42px;height:42px;font-size:19px}
+    html[dir="ltr"] .lightbox-close{left:14px;right:auto}
+    html[dir="rtl"] .lightbox-close{right:14px;left:auto}
+   .lightbox-nav{width:40px;height:40px}
+   .lightbox-nav.prev{position:fixed!important;left:12px!important;right:auto!important;top:50vh!important;bottom:auto!important;inset-inline-start:auto!important;inset-inline-end:auto!important;margin:0!important;transform:translateY(-50%)!important}
+   .lightbox-nav.next{position:fixed!important;right:12px!important;left:auto!important;top:50vh!important;bottom:auto!important;inset-inline-start:auto!important;inset-inline-end:auto!important;margin:0!important;transform:translateY(-50%)!important}
+   .lightbox-nav svg{width:18px;height:18px}
+ }
+
+/* Final viewport-anchored lightbox navigation override */
+.lightbox[open] .lightbox-nav.prev{position:fixed!important;left:12px!important;right:auto!important;top:50vh!important;bottom:auto!important;transform:translateY(-50%)!important}
+.lightbox[open] .lightbox-nav.next{position:fixed!important;right:12px!important;left:auto!important;top:50vh!important;bottom:auto!important;transform:translateY(-50%)!important}
+@media(max-width:640px){.lightbox[open] .lightbox-nav.prev{left:8px!important}.lightbox[open] .lightbox-nav.next{right:8px!important}}
+
+
+/* Final gallery navigation: swapped sides and tucked beside the image */
+.lightbox[open] .lightbox-nav.prev{
+  position:fixed!important;
+  left:auto!important;
+  right:calc(50% + min(46vw, 600px) + 10px)!important;
+  top:50vh!important;
+  bottom:auto!important;
+  transform:translateY(-50%)!important;
+}
+.lightbox[open] .lightbox-nav.next{
+  position:fixed!important;
+  right:auto!important;
+  left:calc(50% + min(46vw, 600px) + 10px)!important;
+  top:50vh!important;
+  bottom:auto!important;
+  transform:translateY(-50%)!important;
+}
+@media(max-width:640px){
+  .lightbox[open] .lightbox-nav.prev{
+    right:calc(50% + 46vw - 2px)!important;
+  }
+  .lightbox[open] .lightbox-nav.next{
+    left:calc(50% + 46vw - 2px)!important;
+  }
+}
+
+.gallery-art{background:linear-gradient(135deg,#12675c,#073b36)}
+.gallery-card:nth-child(2) .gallery-art{background:linear-gradient(135deg,#0c514d,#14594e)}
+.gallery-card:nth-child(3) .gallery-art{background:linear-gradient(135deg,#175a50,#073b36)}
+.gallery-card:nth-child(4) .gallery-art{background:linear-gradient(135deg,#0b4642,#0e6556)}
+.gallery-card:nth-child(5) .gallery-art{background:linear-gradient(135deg,#14534a,#073b36)}
+.gallery-card:nth-child(6) .gallery-art{background:linear-gradient(135deg,#0a4240,#165e53)}
+.lightbox-figure{background:linear-gradient(145deg,#0f554c,#073237)}

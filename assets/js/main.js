@@ -1,3 +1,7 @@
+const floatingWhatsAppScript=document.createElement('script');
+floatingWhatsAppScript.src=new URL('floating-whatsapp.js',document.currentScript.src).href;
+document.head.append(floatingWhatsAppScript);
+
 // Service cards scroll to the matching work card without leaving the homepage.
 // If a service has no matching work card (e.g. Marketing Solutions), fall back
 // to the card's own href (its dedicated work-*.html page).

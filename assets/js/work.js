@@ -1,4 +1,7 @@
 const workScriptUrl=document.currentScript.src;
+const floatingWhatsAppScript=document.createElement('script');
+floatingWhatsAppScript.src=new URL('floating-whatsapp.js',workScriptUrl).href;
+document.head.append(floatingWhatsAppScript);
 const menu=document.getElementById('menuBtn');
 const navLinks=document.getElementById('primaryNavigation');
 function closeMenu({restoreFocus=false}={}){

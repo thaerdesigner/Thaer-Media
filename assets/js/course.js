@@ -4,6 +4,9 @@ const courseFallback=document.getElementById('courseWhatsappFallback');
 const courseLangButton=document.getElementById('langBtn');
 const courseThemeButton=document.getElementById('themeBtn');
 const courseScriptUrl=document.currentScript.src;
+const floatingWhatsAppScript=document.createElement('script');
+floatingWhatsAppScript.src=new URL('floating-whatsapp.js',courseScriptUrl).href;
+document.head.append(floatingWhatsAppScript);
 let courseLang=document.documentElement.lang==='en'?'en':'ar';
 
 const yearElement=document.getElementById('year');

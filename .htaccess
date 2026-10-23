@@ -1,0 +1,35 @@
+Options -MultiViews
+RewriteEngine On
+
+# Always revalidate HTML pages; versioned asset URLs handle long-lived browser caches.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# Redirect legacy course URLs to the single public course address.
+RewriteRule ^(?:course|socialmedis\.courses1)/?$ /socialmedia.courses1 [R=301,L]
+
+# Redirect direct index.html requests to their clean public URL.
+RewriteCond %{THE_REQUEST} \s/+index\.html(?:[?\s]) [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+contact/index\.html(?:[?\s]) [NC]
+RewriteRule ^contact/index\.html$ /contact [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+socialmedia\.courses1/index\.html(?:[?\s]) [NC]
+RewriteRule ^socialmedia\.courses1/index\.html$ /socialmedia.courses1 [R=301,L]
+
+# Keep old .html addresses working, then serve those pages at extensionless URLs.
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html(?:[?\s]) [NC]
+RewriteRule ^(.+)\.html$ /$1 [R=301,L,NE]
+
+# Normalize trailing slashes on the clean page routes.
+RewriteRule ^(contact|socialmedia\.courses1)/$ /$1 [R=301,L]
+RewriteRule ^(work-(?:social|identity|ads|print|content|marketing))/$ /$1 [R=301,L]
+
+# Serve the existing standalone page files behind clean routes.
+RewriteRule ^contact$ contact/index.html [L]
+RewriteRule ^socialmedia\.courses1$ socialmedia.courses1/index.html [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]

@@ -92,13 +92,22 @@ html[dir="ltr"] .hero h1 .heading-gold{margin-inline-start:.18em}
 
 /* ==================== السلايدات الإعلانية ==================== */
 .ad-slider-section{padding:24px 0 20px}
-.ad-slider{position:relative;overflow:hidden;border:1px solid rgba(125,204,185,.3);border-radius:24px;aspect-ratio:3/1;background:#0b403b;isolation:isolate;box-shadow:0 22px 70px rgba(0,20,18,.24),0 0 42px rgba(17,111,96,.14)}
+.ad-slider{position:relative;overflow:hidden;border:1px solid rgba(125,204,185,.3);border-radius:24px;aspect-ratio:3/1;background:#0b403b;isolation:isolate;box-shadow:0 22px 70px rgba(0,20,18,.24),0 0 42px rgba(17,111,96,.14);transition:transform .28s ease,box-shadow .28s ease}
+.ad-slider.image-only-slider:hover{transform:translateY(-3px);box-shadow:0 25px 76px rgba(0,20,18,.28),0 0 46px rgba(17,111,96,.18)}
 .ad-slider.image-only-slider{aspect-ratio:3/1}
 .ad-slider-track{position:absolute;inset:0;display:flex;width:100%;height:100%;direction:ltr;transition:transform .75s cubic-bezier(.22,.75,.25,1);will-change:transform}
 :root[dir="ltr"] .ad-slider-track{flex-direction:row-reverse}
 .ad-slide{position:relative;inset:auto;flex:0 0 100%;width:100%;height:100%;opacity:1;visibility:visible}
 .ad-slide img{display:block;width:100%;height:100%;object-fit:cover}
 .ad-slide-link{position:absolute;inset:0;display:block;color:var(--white)}
+.ad-slide-register{position:absolute;z-index:3;left:37.3%;top:79.3%;transform:translate(-50%,-50%);width:14.8%;height:9.5%;display:flex;align-items:center;justify-content:center;gap:.38em;border:1px solid rgba(255,255,255,.48);border-radius:999px;background:rgba(7,27,28,.48);color:#fff;font-size:clamp(11px,2vw,27px);font-weight:800;line-height:1;white-space:nowrap;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 3px 12px rgba(0,0,0,.2);backdrop-filter:blur(12px) saturate(155%);-webkit-backdrop-filter:blur(12px) saturate(155%);transition:background .22s ease,border-color .22s ease,box-shadow .22s ease}
+.ad-slide-register:hover{background:rgba(7,27,28,.62);border-color:rgba(255,255,255,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 5px 16px rgba(0,0,0,.25)}
+.ad-slide-register:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.ad-slide-register svg{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .22s ease}
+:root[dir="rtl"] .ad-slide-register svg{transform:rotate(180deg)}
+:root[dir="ltr"] .ad-slide-register{left:62.5%;width:18.2%}
+:root[dir="ltr"] .ad-slide-register:hover svg{transform:translateX(3px)}
+:root[dir="rtl"] .ad-slide-register:hover svg{transform:rotate(180deg) translateX(3px)}
 .ad-slide-link:focus-visible{outline:3px solid var(--gold);outline-offset:-7px}
 .ad-slider-arrow{position:absolute;top:50%;z-index:2;width:42px;height:42px;padding:0;display:grid;place-items:center;transform:translateY(-50%);border:1px solid rgba(255,255,255,.3);border-radius:50%;background:rgba(5,22,24,.52);color:#fff;cursor:pointer;backdrop-filter:blur(8px);transition:background .2s,transform .2s}
 .ad-slider-arrow:hover{background:rgba(5,22,24,.82);transform:translateY(-50%) scale(1.06)}
@@ -481,6 +490,8 @@ html[dir="ltr"] .section-head>p{text-align:left}
 
 @media(max-width:640px){
   .ad-slider{aspect-ratio:1.55/1}
+  .ad-slide-register{left:25.4%;width:28.5%;font-size:4.1vw}
+  :root[dir="ltr"] .ad-slide-register{left:74.2%;width:35.2%}
   .ad-slider-arrow{width:28px;height:28px}
   .ad-slider-prev{left:3px}
   .ad-slider-next{right:3px}
@@ -500,6 +511,7 @@ html[dir="ltr"] .section-head>p{text-align:left}
 }
 
 @media(prefers-reduced-motion:reduce){
+  .ad-slider,.ad-slide-register,.ad-slide-register svg{transition:none}
   .ad-slide,.ad-slider-arrow,.ad-slider-dots button{transition:none}
   .ad-slider-track,.testimonials-track{transition:none}
   .float-chip{animation:none}
@@ -526,6 +538,8 @@ html[dir="ltr"] .section-head>p{text-align:left}
 
 @media(max-width:360px){
   .ad-slider{aspect-ratio:1.15/1}
+  .ad-slide-register{left:16.9%;width:38.4%;font-size:5.4vw}
+  :root[dir="ltr"] .ad-slide-register{left:82.6%;width:47.4%}
   .ad-slider-arrow{width:24px;height:24px}
   .ad-slider-prev{left:2px}
   .ad-slider-next{right:2px}

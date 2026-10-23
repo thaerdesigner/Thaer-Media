@@ -65,13 +65,10 @@
   function renderNav(isHome){
     const nav = document.querySelector('.navlinks');
     if (!nav) return;
-    const path = location.pathname.toLowerCase();
-    const isNestedIndex = /\/(?:contact|socialmedia\.courses1)(?:\/|\/index\.html)$/.test(path);
-    const rootPrefix = isNestedIndex ? '../' : '';
     nav.innerHTML = D.nav.map(item=>{
       const href = item.href.charAt(0)==='#'
-        ? (isHome?item.href:(rootPrefix+'index.html'+item.href))
-        : (item.href.startsWith('/')?item.href:rootPrefix+item.href);
+        ? (isHome?item.href:('/'+item.href))
+        : item.href;
       return `<a href="${href}" ${bilingualAttrs({ar:item.ar,en:item.en})}>${escAttr(item.ar)}</a>`;
     }).join('');
   }
@@ -112,7 +109,7 @@
     if (linksList){
       const items = [D.nav[1], D.nav[2], D.nav[3], D.nav[6]]; // الخدمات، أعمالنا، من نحن، تواصل
       linksList.innerHTML = items.map(it=>{
-        const href = it.href.charAt(0)==='#' ? (isHome?it.href:('index.html'+it.href)) : it.href;
+        const href = it.href.charAt(0)==='#' ? (isHome?it.href:('/'+it.href)) : it.href;
         return `<a href="${href}" ${bilingualAttrs({ar:it.ar,en:it.en})}>${escAttr(it.ar)}</a>`;
       }).join('');
     }
@@ -122,7 +119,7 @@
 
     const svcList = document.getElementById('footerServicesList');
     if (svcList){
-      const href = isHome ? '#services' : 'index.html#services';
+      const href = isHome ? '#services' : '/#services';
       svcList.innerHTML = D.footer.servicesList.map(s=>`<a href="${href}" ${bilingualAttrs(s)}>${escAttr(two(s).ar)}</a>`).join('');
     }
 
@@ -265,7 +262,7 @@
     renderProcess();
     renderTestimonials();
   } else {
-    const m = location.pathname.match(/work-([a-z]+)\.html/);
+      const m = location.pathname.match(/work-([a-z]+)(?:\.html)?\/?$/);
     const slug = m ? m[1] : null;
     if (slug && D.work[slug]) renderWorkPage(slug);
     else if (document.querySelector('.contact-page')) renderContactPage();

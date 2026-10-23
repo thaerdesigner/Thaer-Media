@@ -62,7 +62,7 @@ const SITE_DATA = {
     { href: "#about", ar: "من نحن", en: "About" },
     { href: "#process", ar: "كيف نعمل", en: "Process" },
     { href: "#testimonials", ar: "آراء العملاء", en: "Testimonials" },
-    { href: "/contact/", ar: "تواصل", en: "Contact" }
+    { href: "/contact", ar: "تواصل", en: "Contact" }
   ],
 
   /* ======================== الصفحة الرئيسية ======================== */
@@ -76,7 +76,7 @@ const SITE_DATA = {
         ar: "نصنع حضوراً رقمياً متكاملاً من خلال تقديم خدمات التصميم الإبداعي والهوية البصرية وصناعة المحتوى والحملات الإعلانية",
         en: "We build distinctive brands with design, content and campaigns."
       },
-      primaryButton: { href: "/contact/", ar: "لنتحدث عن مشروعك", en: "Let's discuss your project" },
+      primaryButton: { href: "/contact", ar: "لنتحدث عن مشروعك", en: "Let's discuss your project" },
       secondaryButton: { href: "#work", ar: "شاهد أعمالنا", en: "Explore our work" },
       chipOne: { ar: "إبداع × استراتيجية", en: "Creative × Strategy" },
       chipTwo: { ar: "تصميم • محتوى • إعلانات", en: "Design • Content • Ads" },
@@ -95,19 +95,19 @@ const SITE_DATA = {
     },
     /* بطاقات "خدماتنا" الست — الأيقونة مسار صورة (تقدر تبدّلها من مجلد assets/service-icons) */
     services: [
-      { slug: "social", href: "work-social.html", icon: "assets/service-icons/social.svg",
+      { slug: "social", href: "/work-social", icon: "assets/service-icons/social.svg",
         title: { ar: "تصاميم السوشيال ميديا", en: "Social Media Design" },
         desc: { ar: "تصاميم تجارية مميزة ولافتة تعكس هوية العلامة التجارية وتبني حضوراً بصرياً ثابتاً.", en: "Designs that make your brand stand out." } },
-      { slug: "identity", href: "work-identity.html", icon: "assets/service-icons/branding.png",
+      { slug: "identity", href: "/work-identity", icon: "assets/service-icons/branding.png",
         title: { ar: "الهوية البصرية", en: "Brand Identity" },
         desc: { ar: "نظام بصري متكامل يمنح علامتك التجارية حضوراً احترافياً قابلاً للتوسع والانتشار.", en: "A clear visual identity for your brand." } },
-      { slug: "ads", href: "work-ads.html", icon: "assets/service-icons/megaphone.png",
+      { slug: "ads", href: "/work-ads", icon: "assets/service-icons/megaphone.png",
         title: { ar: "إدارة الحملات الإعلانية", en: "Advertising Campaign Management" },
         desc: { ar: "إنشاء وإدارة حملاتك الإعلانية المدفوعة على منصات التواصل للوصول إلى أكبر جمهور ممكن.", en: "Campaigns that expand your reach." } },
-      { slug: "print", href: "work-print.html", icon: "assets/service-icons/offset.png",
+      { slug: "print", href: "/work-print", icon: "assets/service-icons/offset.png",
         title: { ar: "تصاميم المطبوعات", en: "Print Design" },
         desc: { ar: "تصاميم بصرية مبتكرة وغير تقليدية للمطبوعات لأصحاب الشركات والمؤسسات والأنشطة التجارية.", en: "Distinctive designs for print." } },
-      { slug: "content", href: "work-content.html", icon: "assets/service-icons/video.png",
+      { slug: "content", href: "/work-content", icon: "assets/service-icons/video.png",
         title: { ar: "صناعة المحتوى", en: "Content Creation" },
         desc: { ar: "إنشاء وتعديل المحتوى المرئي لإظهار علامتك التجارية من خلال فيديوهات مميزة تشمل الموشن جرافيك والمونتاج.", en: "Video content that brings your brand to life." } },
       { slug: "marketing", href: "#work", icon: "assets/service-icons/innovation.png",
@@ -125,19 +125,19 @@ const SITE_DATA = {
     /* شريط "مختارات من أعمالنا" بالصفحة الرئيسية — صورة الغلاف مختلفة حسب
        اللغة (عربي/إنجليزي)، من مجلد assets/work-covers/ar أو /en */
     workTeaser: [
-      { slug: "social", href: "work-social.html", coverAr: "assets/work-covers/ar/01-social-media.jpg", coverEn: "assets/work-covers/en/01-social-media.jpg", badge: "01 · SOCIAL MEDIA",
+      { slug: "social", href: "/work-social", coverAr: "assets/work-covers/ar/01-social-media.jpg", coverEn: "assets/work-covers/en/01-social-media.jpg", badge: "01 · SOCIAL MEDIA",
         title: { ar: "تصاميم السوشيال ميديا", en: "Social Media Design" },
         desc: { ar: "استعرض أعمالنا في تصاميم السوشيال ميديا.", en: "Explore our social media design work." } },
-      { slug: "identity", href: "work-identity.html", coverAr: "assets/work-covers/ar/02-brand-identity.jpg", coverEn: "assets/work-covers/en/02-brand-identity.jpg", badge: "02 · BRAND IDENTITY",
+      { slug: "identity", href: "/work-identity", coverAr: "assets/work-covers/ar/02-brand-identity.jpg", coverEn: "assets/work-covers/en/02-brand-identity.jpg", badge: "02 · BRAND IDENTITY",
         title: { ar: "الهوية البصرية", en: "Brand Identity" },
         desc: { ar: "استعرض أعمالنا في بناء الهوية البصرية.", en: "Explore our brand identity work." } },
-      { slug: "ads", href: "work-ads.html", coverAr: "assets/work-covers/ar/03-advertising.jpg", coverEn: "assets/work-covers/en/03-advertising.jpg", badge: "03 · ADVERTISING",
+      { slug: "ads", href: "/work-ads", coverAr: "assets/work-covers/ar/03-advertising.jpg", coverEn: "assets/work-covers/en/03-advertising.jpg", badge: "03 · ADVERTISING",
         title: { ar: "إدارة الحملات الإعلانية", en: "Advertising Campaigns" },
         desc: { ar: "استعرض أعمالنا في الحملات الإعلانية.", en: "Explore our advertising campaign work." } },
-      { slug: "print", href: "work-print.html", coverAr: "assets/work-covers/ar/04-print-design.jpg", coverEn: "assets/work-covers/en/04-print-design.jpg", badge: "04 · PRINT DESIGN",
+      { slug: "print", href: "/work-print", coverAr: "assets/work-covers/ar/04-print-design.jpg", coverEn: "assets/work-covers/en/04-print-design.jpg", badge: "04 · PRINT DESIGN",
         title: { ar: "تصاميم المطبوعات", en: "Print Design" },
         desc: { ar: "استعرض أعمالنا في تصاميم المطبوعات.", en: "Explore our print design work." } },
-      { slug: "content", href: "work-content.html", coverAr: "assets/work-covers/ar/05-content-creation.jpg", coverEn: "assets/work-covers/en/05-content-creation.jpg", badge: "05 · CONTENT",
+      { slug: "content", href: "/work-content", coverAr: "assets/work-covers/ar/05-content-creation.jpg", coverEn: "assets/work-covers/en/05-content-creation.jpg", badge: "05 · CONTENT",
         title: { ar: "صناعة المحتوى", en: "Content Creation" },
         desc: { ar: "استعرض أعمالنا في صناعة المحتوى المرئي.", en: "Explore our visual content work." } }
     ],

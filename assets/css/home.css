@@ -93,46 +93,13 @@ html[dir="ltr"] .hero h1 .heading-gold{margin-inline-start:.18em}
 /* ==================== السلايدات الإعلانية ==================== */
 .ad-slider-section{padding:24px 0 20px}
 .ad-slider{position:relative;overflow:hidden;border:1px solid rgba(125,204,185,.3);border-radius:24px;aspect-ratio:3/1;background:#0b403b;isolation:isolate;box-shadow:0 22px 70px rgba(0,20,18,.24),0 0 42px rgba(17,111,96,.14)}
+.ad-slider.image-only-slider{aspect-ratio:3/1}
 .ad-slider-track{position:absolute;inset:0;display:flex;width:100%;height:100%;direction:ltr;transition:transform .75s cubic-bezier(.22,.75,.25,1);will-change:transform}
 :root[dir="ltr"] .ad-slider-track{flex-direction:row-reverse}
 .ad-slide{position:relative;inset:auto;flex:0 0 100%;width:100%;height:100%;opacity:1;visibility:visible}
 .ad-slide img{display:block;width:100%;height:100%;object-fit:cover}
-.course-ad-slide{background:radial-gradient(ellipse at 18% 24%,rgba(226,185,97,.19),transparent 38%),radial-gradient(ellipse at 82% 82%,rgba(28,139,117,.25),transparent 42%),linear-gradient(120deg,#052c2d,#0a5149 58%,#062c30)}
-.course-ad-link{position:absolute;inset:0;display:grid;place-items:center;padding:0;color:var(--white)}
-.course-ad-link:focus-visible{outline:3px solid var(--gold);outline-offset:-7px}
-.course-ad-panel{position:relative;display:flex;align-items:stretch;width:100%;height:100%;min-width:0;overflow:hidden;direction:ltr}
-.course-ad-copy{position:relative;display:flex;min-width:0;flex:1;flex-direction:column;align-items:flex-start;justify-content:center;gap:clamp(7px,1vw,13px);padding:clamp(24px,4vw,52px) clamp(72px,7vw,104px);overflow:hidden;direction:rtl;text-align:right}
-.course-ad-kicker{display:inline-flex;align-items:center;gap:8px;color:#e9c774;font-size:clamp(10px,.9vw,13px);font-weight:800;letter-spacing:.02em}
-.course-ad-kicker:before{width:7px;height:7px;border-radius:50%;background:#7cda9a;box-shadow:0 0 10px rgba(124,218,154,.65);content:""}
-.course-ad-copy strong{max-width:100%;color:#f7f8f5;font-size:clamp(18px,2vw,27px);font-weight:800;line-height:1.4;text-wrap:balance}
-.course-ad-description{max-width:36em;color:rgba(244,247,243,.76);font-size:clamp(11px,1.1vw,15px);line-height:1.65}
-.course-ad-cta{display:inline-flex;align-items:center;gap:9px;margin-top:2px;color:#f1c64f;font-size:clamp(11px,1vw,14px);font-weight:800;transition:gap .25s var(--ease)}
-.course-ad-cta svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-:root[dir="rtl"] .course-ad-cta svg{transform:rotate(180deg)}
-.course-ad-link:hover .course-ad-cta{gap:13px}
-.course-ad-portrait{position:relative;display:block;flex:0 0 36%;width:36%;min-width:0;height:100%;align-self:stretch;margin:0;overflow:hidden}
-.course-ad-portrait:after{position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,35,35,.24),transparent 48%);content:"";pointer-events:none}
-.course-ad-portrait img{display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center 14%;border:0;border-radius:inherit;box-shadow:none;transition:transform .6s var(--ease)}
-.course-ad-link:hover .course-ad-portrait img{transform:scale(1.035)}
-:root[dir="ltr"] .course-ad-copy{direction:ltr;text-align:left}
-:root[data-theme="light"] .course-ad-slide{background:radial-gradient(ellipse at 16% 20%,rgba(226,185,97,.3),transparent 38%),radial-gradient(ellipse at 85% 84%,rgba(17,111,94,.16),transparent 42%),linear-gradient(120deg,#e5f2e9,#f4f7ed 54%,#d4e8de)}
-:root[data-theme="light"] .course-ad-kicker{color:#72510d}
-:root[data-theme="light"] .course-ad-copy strong{color:#073b36}
-:root[data-theme="light"] .course-ad-description{color:rgba(6,27,27,.78)}
-:root[data-theme="light"] .course-ad-cta{color:#72510d}
-:root[data-theme="light"] .course-ad-portrait:after{background:linear-gradient(0deg,rgba(6,27,27,.16),transparent 48%)}
-.course-ad-slide--platforms{background:radial-gradient(ellipse at 82% 18%,rgba(79,171,151,.24),transparent 38%),linear-gradient(120deg,#062d37,#0d564c 58%,#092f35)}
-.course-ad-slide--platforms .course-ad-panel{flex-direction:row-reverse}
-.course-ad-slide--whatsapp{background:radial-gradient(circle at 20% 50%,rgba(124,218,154,.2),transparent 35%),linear-gradient(120deg,#063831,#07534b 58%,#063137)}
-.course-ad-slide--whatsapp .course-ad-panel{flex-direction:row}
-.course-ad-slide--ai{background:radial-gradient(ellipse at 52% 50%,rgba(103,128,222,.24),transparent 43%),linear-gradient(120deg,#122e48,#184851 55%,#092e3d)}
-.course-ad-slide--ai .course-ad-panel{flex-direction:row-reverse}
-.course-ad-slide--campaigns{background:radial-gradient(ellipse at 78% 22%,rgba(226,185,97,.24),transparent 34%),linear-gradient(120deg,#3b2b20,#58412a 52%,#153f3a)}
-.course-ad-slide--campaigns .course-ad-panel{flex-direction:row}
-:root[data-theme="light"] .course-ad-slide--platforms{background:radial-gradient(ellipse at 82% 18%,rgba(17,111,94,.2),transparent 38%),linear-gradient(120deg,#e5f1f4,#e5f2e9 58%,#f4f3e5)}
-:root[data-theme="light"] .course-ad-slide--whatsapp{background:radial-gradient(circle at 20% 50%,rgba(124,218,154,.25),transparent 35%),linear-gradient(120deg,#e4f3e8,#eef7e8 58%,#d9ece3)}
-:root[data-theme="light"] .course-ad-slide--ai{background:radial-gradient(ellipse at 52% 50%,rgba(103,128,222,.18),transparent 43%),linear-gradient(120deg,#e7edf6,#e4f1ed 55%,#e1f0ea)}
-:root[data-theme="light"] .course-ad-slide--campaigns{background:radial-gradient(ellipse at 78% 22%,rgba(226,185,97,.26),transparent 34%),linear-gradient(120deg,#f4eddf,#f4f2e8 52%,#e0efe8)}
+.ad-slide-link{position:absolute;inset:0;display:block;color:var(--white)}
+.ad-slide-link:focus-visible{outline:3px solid var(--gold);outline-offset:-7px}
 .ad-slider-arrow{position:absolute;top:50%;z-index:2;width:42px;height:42px;padding:0;display:grid;place-items:center;transform:translateY(-50%);border:1px solid rgba(255,255,255,.3);border-radius:50%;background:rgba(5,22,24,.52);color:#fff;cursor:pointer;backdrop-filter:blur(8px);transition:background .2s,transform .2s}
 .ad-slider-arrow:hover{background:rgba(5,22,24,.82);transform:translateY(-50%) scale(1.06)}
 .ad-slider-arrow svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}

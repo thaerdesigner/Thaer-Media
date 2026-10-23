@@ -1,19 +1,16 @@
 # Thaer Media — Website
 
 Static marketing website for **Thaer Media** (design / branding / social-media agency). Plain
-HTML/CSS/JS — no build tool, no package manager, no framework, no server-side code. The homepage,
-contact page, course landing page, and six work galleries can be opened from the main
-[`index.html`](index.html); most shared content remains centralized in [`assets/js/data.js`](assets/js/data.js).
+HTML/CSS/JS — no build tool, no package manager, no framework, no server-side code. Open the main
+[`index.html`](index.html) to browse the homepage, contact page, course page, and six work galleries
+offline. Shared content remains centralized in [`assets/js/data.js`](assets/js/data.js).
 See **"التحكم بمحتوى الموقع"** below for the full guide to that file.
-
-For deeper architectural notes (why things are built the way they are, past bugs and their fixes,
-design decisions) see [`CLAUDE.md`](CLAUDE.md) — written for whoever maintains this code next.
 
 ## Running locally
 
 No build step. Keep the `assets/` folder beside `index.html`, then open `index.html` directly.
-Its section and page routes work locally without a web server. The standalone HTML pages remain
-available for direct web URLs. To test the site over HTTP as well:
+Use the site's links to move between all pages and galleries without a server. For a local HTTP
+preview, run:
 
 ```bash
 npx serve .
@@ -29,21 +26,46 @@ Then visit `http://localhost:8000` (or whatever port the tool prints).
 |---|---|
 | `index.html` | Main offline entry point: homepage, contact, course, and six work-gallery views. Bilingual (AR/EN toggle in the header). |
 | `work-social.html`, `work-identity.html`, `work-ads.html`, `work-print.html`, `work-content.html`, `work-marketing.html` | Standalone web versions of the work galleries. |
-| `contact/index.html` | Standalone contact page served at `/contact/` by GitHub Pages. |
-| `course.html` and `socialmedia.courses1/index.html` | Standalone web versions of the in-person course landing page. |
+| `contact/index.html` | Published contact page at `/contact`. |
+| `socialmedia.courses1/index.html` | Published course page at `/socialmedia.courses1`; its metadata uses the supplied course share design. |
+| `contact.html` and `work-*.html` | Standalone compatibility copies; the main `index.html` also contains offline versions. |
+
+## صور معاينة الروابط
+
+كل صور المعاينة بصيغة PNG موجودة في [`assets/previews/`](assets/previews/). استبدل الصورة مع إبقاء
+اسم الملف نفسه لتحديث المعاينة:
+
+| الصفحة | ملف الصورة |
+|---|---|
+| الرئيسية والتواصل | `home-contact.png` |
+| الدورة | `course.png` |
+| أعمال السوشيال ميديا | `work-social.png` |
+| الهوية البصرية | `work-identity.png` |
+| الحملات الإعلانية | `work-ads.png` |
+| المطبوعات | `work-print.png` |
+| صناعة المحتوى | `work-content.png` |
+| التسويق | `work-marketing.png` |
+
+بيانات معاينة الرابط في كل صفحة تشير مباشرةً إلى الصورة المقابلة بهذا المجلد.
+
+The public pages use clean URLs such as `/contact`, `/socialmedia.courses1`, and `/work-social`.
+Keep the root `.htaccess` file when uploading to an Apache host; it redirects old `.html` and
+`index.html` addresses and serves the clean routes.
 
 From `index.html`, use the header, service cards, course slider, or CTA to switch between the
-embedded views without opening a separate local HTML file. The offline views use local images and
-styles from `assets/`. Custom web fonts are hosted remotely; without an internet connection, the
-browser uses the declared system-font fallbacks.
+embedded views without opening a separate local HTML file. The offline views use local images,
+styles, scripts, and page content from `assets/`. Custom web fonts are hosted remotely; without an
+internet connection, the browser uses the declared system-font fallbacks.
 
 ## Project structure
 
 ```
 assets/
+  previews/  PNG images used for link previews on every public page
   css/       base.css (shared header/footer/tokens), home.css, work.css, contact.css
   js/        data.js (all content), render.js (builds pages from data.js), main.js (homepage), work.js (other 7 pages)
   images/    logo, hero photo, About section photos
+  ad-slides/ homepage carousel images, all 1440 × 480 pixels
   service-icons/   the 6 homepage service icons
   work-covers/     homepage work-teaser cover photos (ar/ and en/ variants)
 ```
@@ -124,6 +146,7 @@ photo: "assets/images/hero-person.jpg"
 | المجلد | يحتوي على |
 |---|---|
 | `assets/images/` | شعار الموقع، صورة الهيرو، صور قسم "من نحن" |
+| `assets/ad-slides/` | صور سلايدر الصفحة الرئيسية. ملفات `ad-slide-01.jpg` إلى `ad-slide-05.jpg` للعربية، وملفات `ad-slide-01-en.jpg` إلى `ad-slide-05-en.jpg` للإنجليزية. استبدل كل صورة بالنسخة الجديدة بالاسم نفسه والأبعاد **1440 × 480**؛ تتبدل الصور تلقائيًا حسب لغة الموقع. |
 | `assets/service-icons/` | أيقونات الخدمات الست بالصفحة الرئيسية |
 | `assets/work-covers/ar/` و `assets/work-covers/en/` | صور غلاف شريط "مختارات من أعمالنا" — **نسختين منفصلتين**، وحدة تظهر بالوضع العربي ووحدة بالإنجليزي (`coverAr`/`coverEn`) |
 

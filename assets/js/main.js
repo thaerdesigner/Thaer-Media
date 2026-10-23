@@ -99,8 +99,13 @@ function fitTestimonialHeight(){
 }
 function updateWorkCovers(){
   document.querySelectorAll('.work-art[data-cover-ar]').forEach(art=>{
-    const src=art.getAttribute(lang==='ar'?'data-cover-ar':'data-cover-en');
+    const src=art.getAttribute('data-cover-ar');
     if(src) art.style.backgroundImage=`url(\"${src}\")`;
+  });
+}
+function updateAdSlideImages(){
+  document.querySelectorAll('#adSlider img[data-slide-ar][data-slide-en]').forEach(image=>{
+    image.src=image.getAttribute(lang==='ar'?'data-slide-ar':'data-slide-en');
   });
 }
 
@@ -115,11 +120,11 @@ function setLang(next){
   document.querySelectorAll('#adSlider [data-label-ar], #testimonialSlider [data-label-ar]').forEach(el=>{
     el.setAttribute('aria-label',el.getAttribute(lang==='ar'?'data-label-ar':'data-label-en'));
   });
+  updateAdSlideImages();
   langBtn.textContent=lang==='ar'?'EN':'AR';
   document.title=window.__pageTitle
     ?(lang==='ar'?window.__pageTitle.ar:window.__pageTitle.en)
     :(lang==='ar'?'Thaer Media — نوظِّفُ خبرتنا لنجــاح علامتـــك التجاريــة':'Thaer Media — We turn experience into brand success');
-  updateWorkCovers();
   try{localStorage.setItem('lang',lang)}catch(e){}
 }
 langBtn.addEventListener('click',()=>setLang(lang==='ar'?'en':'ar'));

@@ -112,7 +112,9 @@ function setLang(next){
     el.setAttribute('aria-label',el.getAttribute(lang==='ar'?'data-label-ar':'data-label-en'));
   });
   langBtn.textContent=lang==='ar'?'EN':'AR';
-  document.title=lang==='ar'?'Thaer Media — نوظِّفُ خبرتنا لنجــاح علامتـــك التجاريــة':'Thaer Media — We turn experience into brand success';
+  document.title=window.__pageTitle
+    ?(lang==='ar'?window.__pageTitle.ar:window.__pageTitle.en)
+    :(lang==='ar'?'Thaer Media — نوظِّفُ خبرتنا لنجــاح علامتـــك التجاريــة':'Thaer Media — We turn experience into brand success');
   updateWorkCovers();
   try{localStorage.setItem('lang',lang)}catch(e){}
 }
@@ -128,6 +130,7 @@ function resetHeadingStyles(){
 /* بعد تبديل اللغة يتغيّر المحتوى، فيُعاد الضبط */
 const _setLang=setLang;
 setLang=function(next){_setLang(next);positionAdSlider(true);positionTestimonialSlider(true);requestAnimationFrame(()=>{resetHeadingStyles();fitTestimonialHeight()});};
+window.__applyLanguage=setLang;
 /* استرجاع لغة محفوظة من زيارة سابقة (اتجاه RTL/LTR يُضبط أبكر من هذا في
    سكربت مضمّن داخل <head> لتفادي "قفزة" التخطيط؛ هذا الجزء يبدّل نص
    العناصر فعلياً عبر setLang الكاملة). */
@@ -242,7 +245,7 @@ if(adSlider){
   updateAdSlide(activeAdSlide);
   function startAdTimer(){
     clearInterval(adTimer);
-    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    if(adSlides.length<=1||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
     adTimer=setInterval(()=>{
       const directionMultiplier=document.documentElement.dir==='rtl'?1:-1;
       moveAdSlide(directionMultiplier);

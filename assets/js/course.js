@@ -35,8 +35,8 @@ function setCourseLanguage(next){
     ?'العمل عبر منصات التواصل واستخدام أدوات الذكاء الاصطناعي — Thaer Media'
     :'Working on Social Media Platforms and Using AI Tools — Thaer Media';
   document.getElementById('courseMetaDescription').content=next==='ar'
-    ?'دورة وجاهية بعنوان العمل عبر منصات التواصل واستخدام أدوات الذكاء الاصطناعي، يقدّمها المختص والمدرب ثائر القريناوي. تعرّف إلى Meta Business Suite، تصميم الإعلانات، كتابة المحتوى والإعلانات الممولة خلال 6 لقاءات تدريبية.'
-    :'An in-person course on working on social media platforms and using AI tools, led by specialist and trainer Thaer AlQrenawi. Learn Meta Business Suite, ad design, content writing, and paid advertising in six training sessions.';
+    ?'دورة وجاهية عن إنشاء وإدارة صفحات فيسبوك وإنستغرام، واتساب للأعمال، Meta Business Suite، التصميم بأدوات الذكاء الاصطناعي والحملات الإعلانية.'
+    :'An in-person course covering Facebook and Instagram page management, WhatsApp Business, Meta Business Suite, AI-assisted design, and advertising campaigns.';
   try{localStorage.setItem('lang',next)}catch(error){console.warn('Could not save language preference.',error)}
 }
 

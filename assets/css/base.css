@@ -175,10 +175,16 @@ header.scrolled .nav{
   background:var(--gold);transform:scaleX(0);transform-origin:center;
   transition:transform .3s var(--ease);
 }
-.navlinks a:hover{color:var(--text)}
-.navlinks a:hover:after{transform:scaleX(1)}
+.navlinks a:hover{
+  color:var(--gold-text);padding-inline:9px;margin-inline:-8px;
+  border-radius:999px;background:rgba(var(--ui-line-rgb),.12)
+}
+.navlinks a:hover:after{display:none}
 .navlinks a.active{color:var(--gold-text);padding-inline:9px;margin-inline:-8px;border-radius:999px;background:rgba(var(--ui-line-rgb),.12)}
 .navlinks a.active:after{display:none}
+.navlinks:hover a.active:not(:hover){color:var(--text-muted);padding-inline:1px;margin-inline:0;background:transparent}
+.navlinks a.pointer-hover{color:var(--gold-text);padding-inline:9px;margin-inline:-8px;border-radius:999px;background:rgba(var(--ui-line-rgb),.12)}
+.navlinks a.pointer-hover:after{display:none}
 .actions{display:flex;align-items:center;gap:9px}
 .lang{
   border:1px solid var(--line);background:rgba(var(--surface-rgb),.04);
@@ -249,6 +255,7 @@ header.scrolled .nav{
     padding:12px 14px;font-size:14px;text-align:center;border-radius:11px;
     background:rgba(var(--surface-rgb),.03);
   }
+  .navlinks a:hover,.navlinks a.pointer-hover{padding:12px 14px;margin:0;border-radius:11px;background:rgba(var(--ui-line-rgb),.12)}
   .navlinks a.active{padding:12px 14px;margin:0;border-radius:11px}
   .navlinks a:after{display:none}
   .navlinks a:hover,.navlinks a.active{background:rgba(var(--ui-line-rgb),.12);color:var(--text)}

@@ -62,7 +62,7 @@ const SITE_DATA = {
     { href: "#about", ar: "من نحن", en: "About" },
     { href: "#process", ar: "كيف نعمل", en: "Process" },
     { href: "#testimonials", ar: "آراء العملاء", en: "Testimonials" },
-    { href: "contact.html", ar: "تواصل", en: "Contact" }
+    { href: "/contact/", ar: "تواصل", en: "Contact" }
   ],
 
   /* ======================== الصفحة الرئيسية ======================== */
@@ -76,7 +76,7 @@ const SITE_DATA = {
         ar: "نصنع حضوراً رقمياً متكاملاً من خلال تقديم خدمات التصميم الإبداعي والهوية البصرية وصناعة المحتوى والحملات الإعلانية",
         en: "We build distinctive brands with design, content and campaigns."
       },
-      primaryButton: { href: "contact.html", ar: "لنتحدث عن مشروعك", en: "Let's discuss your project" },
+      primaryButton: { href: "/contact/", ar: "لنتحدث عن مشروعك", en: "Let's discuss your project" },
       secondaryButton: { href: "#work", ar: "شاهد أعمالنا", en: "Explore our work" },
       chipOne: { ar: "إبداع × استراتيجية", en: "Creative × Strategy" },
       chipTwo: { ar: "تصميم • محتوى • إعلانات", en: "Design • Content • Ads" },
@@ -244,11 +244,11 @@ const SITE_DATA = {
       description: { ar: "هنا سنعرض الأعمال الخاصة بخدمة تصاميم السوشيال ميديا بعد إضافة المشاريع والصور المعتمدة.", en: "Explore our social media design projects." },
       gallery: [
         { number: "01", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/social/01.jpg" },
-        { number: "02", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/social/01.jpg" },
-        { number: "03", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/social/01.jpg" },
-        { number: "04", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/social/01.jpg" },
-        { number: "05", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/social/01.jpg" },
-        { number: "06", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/social/01.jpg" }
+        { number: "02", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/social/02.jpg" },
+        { number: "03", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/social/03.jpg" },
+        { number: "04", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/social/04.jpg" },
+        { number: "05", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/social/05.jpg" },
+        { number: "06", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/social/06.jpg" }
       ]
     },
     identity: {
@@ -256,11 +256,11 @@ const SITE_DATA = {
       description: { ar: "هنا سنعرض الأعمال الخاصة بخدمة الهوية البصرية بعد إضافة المشاريع والصور المعتمدة.", en: "Explore our brand identity projects." },
       gallery: [
         { number: "01", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/identity/01.jpg" },
-        { number: "02", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/identity/01.jpg" },
-        { number: "03", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/identity/01.jpg" },
-        { number: "04", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/identity/01.jpg" },
-        { number: "05", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/identity/01.jpg" },
-        { number: "06", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/identity/01.jpg" }
+        { number: "02", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/identity/02.jpg" },
+        { number: "03", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/identity/03.jpg" },
+        { number: "04", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/identity/04.jpg" },
+        { number: "05", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/identity/05.jpg" },
+        { number: "06", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/identity/06.jpg" }
       ]
     },
     ads: {
@@ -268,11 +268,11 @@ const SITE_DATA = {
       description: { ar: "هنا سنعرض الأعمال الخاصة بخدمة إدارة الحملات الإعلانية بعد إضافة المشاريع والصور المعتمدة.", en: "Explore our advertising campaign projects." },
       gallery: [
         { number: "01", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/ads/01.jpg" },
-        { number: "02", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/ads/01.jpg" },
-        { number: "03", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/ads/01.jpg" },
-        { number: "04", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/ads/01.jpg" },
-        { number: "05", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/ads/01.jpg" },
-        { number: "06", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/ads/01.jpg" }
+        { number: "02", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/ads/02.jpg" },
+        { number: "03", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/ads/03.jpg" },
+        { number: "04", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/ads/04.jpg" },
+        { number: "05", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/ads/05.jpg" },
+        { number: "06", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/ads/06.jpg" }
       ]
     },
     print: {
@@ -280,11 +280,11 @@ const SITE_DATA = {
       description: { ar: "هنا سنعرض الأعمال الخاصة بخدمة تصاميم المطبوعات بعد إضافة المشاريع والصور المعتمدة.", en: "Explore our print design projects." },
       gallery: [
         { number: "01", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/print/01.jpg" },
-        { number: "02", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/print/01.jpg" },
-        { number: "03", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/print/01.jpg" },
-        { number: "04", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/print/01.jpg" },
-        { number: "05", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/print/01.jpg" },
-        { number: "06", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/print/01.jpg" }
+        { number: "02", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/print/02.jpg" },
+        { number: "03", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/print/03.jpg" },
+        { number: "04", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/print/04.jpg" },
+        { number: "05", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/print/05.jpg" },
+        { number: "06", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/print/06.jpg" }
       ]
     },
     content: {
@@ -292,11 +292,11 @@ const SITE_DATA = {
       description: { ar: "هنا سنعرض الأعمال الخاصة بخدمة صناعة المحتوى بعد إضافة المشاريع والصور المعتمدة.", en: "Explore our content creation projects." },
       gallery: [
         { number: "01", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/content/01.jpg" },
-        { number: "02", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/content/01.jpg" },
-        { number: "03", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/content/01.jpg" },
-        { number: "04", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/content/01.jpg" },
-        { number: "05", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/content/01.jpg" },
-        { number: "06", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/content/01.jpg" }
+        { number: "02", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/content/02.jpg" },
+        { number: "03", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/content/03.jpg" },
+        { number: "04", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/content/04.jpg" },
+        { number: "05", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/content/05.jpg" },
+        { number: "06", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/content/06.jpg" }
       ]
     },
     marketing: {
@@ -304,11 +304,11 @@ const SITE_DATA = {
       description: { ar: "هنا سنعرض الأعمال الخاصة بخدمة حلول تسويقية بعد إضافة المشاريع والصور المعتمدة.", en: "Explore our marketing solutions projects." },
       gallery: [
         { number: "01", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/marketing/01.jpg" },
-        { number: "02", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/marketing/01.jpg" },
-        { number: "03", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/marketing/01.jpg" },
-        { number: "04", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/marketing/01.jpg" },
-        { number: "05", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/marketing/01.jpg" },
-        { number: "06", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/marketing/01.jpg" }
+        { number: "02", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/marketing/02.jpg" },
+        { number: "03", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/marketing/03.jpg" },
+        { number: "04", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/marketing/04.jpg" },
+        { number: "05", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/marketing/05.jpg" },
+        { number: "06", title: { ar: "مساحة عمل", en: "Project Space" }, description: { ar: "سيتم إضافة المشروع هنا.", en: "The project will be added here." }, image: "assets/gallery/marketing/06.jpg" }
       ]
     }
   },

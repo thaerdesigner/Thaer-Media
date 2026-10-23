@@ -263,7 +263,7 @@
 </div>
 </footer>
 <script src="assets/js/data.js"></script>
-<script src="assets/js/render.js?v=offline-gallery-20261023"></script>
+<script src="assets/js/render.js?v=gallery-footer-20261023"></script>
 <script src="assets/js/main.js"></script>
 <script>
 (() => {
@@ -347,7 +347,33 @@
       </div>
     </footer>`;
   function workMarkup(){
-    return `<main class="page"><div class="container"><div class="section-head"><div class="section-title-wrap"><h1></h1></div><p></p></div><div class="gallery-grid"></div></div></main>`;
+    return `<main class="page"><div class="container"><div class="section-head"><div class="section-title-wrap"><h1></h1></div><p></p></div><div class="gallery-grid"></div></div></main><footer class="standalone-footer offline-standalone-footer"><div class="container"><div class="standalone-footer-row"><span class="standalone-copyright" data-ar="© 2026 Thaer Media. جميع الحقوق محفوظة." data-en="© 2026 Thaer Media. All rights reserved.">© 2026 Thaer Media. جميع الحقوق محفوظة.</span><a class="standalone-footer-return gold-btn" href="#home" data-ar="العودة إلى الموقع" data-en="Back to website">العودة إلى الموقع</a></div></div></footer>`;
+  }
+  function renderWorkFallback(slug){
+    const work=SITE_DATA.work[slug];
+    const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    const bilingual=value=>typeof value==='string'?{ar:value,en:value}:{ar:value?.ar||'',en:value?.en||value?.ar||''};
+    const title=bilingual(work.title);
+    const description=bilingual(work.description);
+    const grid=page.querySelector('.gallery-grid');
+    const heading=page.querySelector('.section-title-wrap h1');
+    const summary=page.querySelector('.section-head > p');
+    heading.dataset.ar=title.ar;
+    heading.dataset.en=title.en;
+    heading.textContent=title.ar;
+    summary.dataset.ar=description.ar;
+    summary.dataset.en=description.en;
+    summary.textContent=description.ar;
+    grid.innerHTML=work.gallery.map((item,index)=>{
+      const itemTitle=bilingual(item.title);
+      const itemDescription=bilingual(item.description);
+      const image=typeof item.image==='string'&&item.image.trim()?item.image:'';
+      const imageAttribute=image?` data-image="${escapeHtml(image)}" tabindex="0" role="button" aria-labelledby="offlineGalleryTitle${index}"`:'';
+      const imageStyle=image?` style="background-image:url('${escapeHtml(image)}');background-size:cover;background-position:center"`:'';
+      return `<div class="gallery-card glass"${imageAttribute}><div class="gallery-art"${imageStyle}></div><div class="gallery-overlay"><span>${escapeHtml(item.number)}</span><h2 id="offlineGalleryTitle${index}" data-ar="${escapeHtml(itemTitle.ar)}" data-en="${escapeHtml(itemTitle.en)}">${escapeHtml(itemTitle.ar)}</h2><p data-ar="${escapeHtml(itemDescription.ar)}" data-en="${escapeHtml(itemDescription.en)}">${escapeHtml(itemDescription.ar)}</p></div></div>`;
+    }).join('');
+    window.__pageTitle={ar:`Thaer Media — ${title.ar}`,en:`Thaer Media — ${title.en}`};
+    document.title=window.__pageTitle.ar;
   }
   function ensureLightbox(){
     if(document.getElementById('lightbox'))return;
@@ -393,7 +419,7 @@
     const isCourse=route==='course';
     const isContact=route==='contact';
     home.hidden=!isHome;
-    footer.hidden=isCourse||isContact;
+    footer.hidden=isCourse||isContact||route.startsWith('work/');
     page.hidden=isHome;
     document.body.classList.toggle('course-page',isCourse);
     document.body.classList.toggle('contact-landing',isContact);
@@ -405,7 +431,10 @@
     else{
       const slug=route.replace(/^work\//,'');
       if(!SITE_DATA.work[slug]){location.hash='#home';return;}
-      page.innerHTML=workMarkup();window.renderOfflineWorkPage(slug,page);
+      page.innerHTML=workMarkup();
+      if(typeof window.renderOfflineWorkPage==='function')window.renderOfflineWorkPage(slug,page);
+      else renderWorkFallback(slug);
+      page.querySelector('.gallery-home-link')?.remove();
     }
     ensureLightbox();
     page.querySelectorAll('[data-key-href]').forEach(element=>{const value=element.getAttribute('data-key-href').split('.').reduce((object,key)=>object?.[key],SITE_DATA);if(typeof value==='string')element.href=value;});
@@ -415,6 +444,7 @@
     window.scrollTo(0,0);
   }
   document.addEventListener('click',event=>{
+    if(event.defaultPrevented)return;
     const link=event.target.closest('a[href]');
     if(!link)return;
     if(!page.hidden&&link.hash&&document.getElementById(link.hash.slice(1))){
